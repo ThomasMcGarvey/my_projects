@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@400;500&display=swap");
+
 .App {
   text-align: center;
 }
@@ -35,4 +37,77 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.base-bg {
+  background-color: lightgray;
+}
+
+.list-container {
+  height: 100vh;
+}
+
+.list-wd {
+  width: 100%;
+}
+
+.list-hw {
+  height: 520px;
+  width: 800px;
+}
+
+.list-scroll {
+  scroll-behavior: auto;
+  scrollbar-width: thin;
+  overflow-y: auto;
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+}
+
+.scroll4::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll4::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll4::-webkit-scrollbar-thumb {
+  height: 6px;
+  background: rgb(146, 146, 146);
+  border-radius: 20px;
+  visibility: auto;
+}
+
+.scroll4::-webkit-scrollbar-track {
+  background: white;
+  border-radius: 20px;
+}
+
+.img-avatar {
+  height: 100px;
+  margin-top: 15%;
+  margin-left: 15%;
+}
+
+.name-txt {
+  font-family: "Raleway", sans-serif;
+}
+
+.icon-color {
+  color: rgb(182, 182, 182);
+}
+
+.icon-color:hover {
+  color: black;
+}
+
+.tag-stickey {
+  border-radius: 15%;
+  background-color: rgb(211, 211, 211);
+}
+
+.card {
+  border-radius: 0.5rem !important;
 }
