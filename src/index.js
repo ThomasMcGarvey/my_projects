@@ -8,7 +8,6 @@ import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
   <BrowserRouter>
-    {/* <React.StrictMode/>  -- if route in enclosed it will require strict checks */}
     <App />
   </BrowserRouter>,
   document.getElementById("root")
