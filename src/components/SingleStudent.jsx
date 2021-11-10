@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useMemo } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPlus, faMinus } from "@fortawesome/free-solid-svg-icons";
 import { useFormik } from "formik";
@@ -9,6 +9,12 @@ function SingleStudent(student) {
 
   const [visibility, setVisibility] = useState("d-none");
   const [icon, setIcon] = useState(faPlus);
+  /*
+  const gradeAvg = useMemo(() => {
+    return calculateGradeAvg();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  */
   const [tags, setTags] = useState(() => {
     if (student.single.tags) {
       return student.single.tags;
@@ -73,7 +79,7 @@ function SingleStudent(student) {
 
   // iterate through the grades array changing the value to a number and summing
   // them up. Then divide the sum by the length of the array to recieve an average.
-  const gradeAvg = () => {
+  const calculateGradeAvg = () => {
     let grades = student.single.grades;
     let sum = 0;
     let length = grades.length;
@@ -83,6 +89,11 @@ function SingleStudent(student) {
     let average = sum / length;
     return average;
   };
+
+  const gradeAvg = useMemo(() => {
+    return calculateGradeAvg();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   //==========( MAP GRADES )
 
@@ -125,7 +136,7 @@ function SingleStudent(student) {
           <div>Email: {student.single.email}</div>
           <div>Company: {student.single.company}</div>
           <div>Skill: {student.single.skill}</div>
-          <div>Average: {gradeAvg()}%</div>
+          <div>Average: {gradeAvg}%</div>
         </div>
       </div>
       <div className="col-sm-1">
