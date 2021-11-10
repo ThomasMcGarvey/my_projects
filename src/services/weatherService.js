@@ -1,7 +1,7 @@
 import axios from "axios";
 
 var endpoint = `https://api.openweathermap.org/data/2.5/onecall`;
-var apiKey = `9217156d34a1d6088935e512410428d1`;
+var apiKey = ``;
 
 let getWeatherByCity = (payload) => {
   const config = {
