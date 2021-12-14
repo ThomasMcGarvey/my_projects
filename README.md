@@ -1,29 +1,6 @@
 # Personal notes:
 
-This is a React App built with visual studio. The node_modules are not included as required
-
-Install command: yarn install
-Run command: yarn start
-Port: http://localhost:3000/
-
-As stated in the json file, the libraries used in my solution are:
-"@fortawesome/fontawesome-free": "^5.15.4",
-"@fortawesome/fontawesome-svg-core": "^1.2.36",
-"@fortawesome/free-solid-svg-icons": "^5.15.4",
-"@fortawesome/react-fontawesome": "^0.1.16",
-"@material-ui/core": "^4.12.3",
-"@mui/material": "^5.0.6",
-"@testing-library/jest-dom": "^5.11.4",
-"@testing-library/react": "^11.1.0",
-"@testing-library/user-event": "^12.1.10",
-"axios": "^0.24.0",
-"bootstrap": "^5.1.3",
-"formik": "^2.2.9",
-"react": "^17.0.2",
-"react-dom": "^17.0.2",
-"react-router-dom": "^5.3.0",
-"react-scripts": "4.0.3",
-"web-vitals": "^1.0.1"
+This repo harbors some small projects that I have done.
 
 # Getting Started with Create React App
 
