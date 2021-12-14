@@ -77,8 +77,6 @@ function SingleStudent(student) {
 
   //==========( CALCULATE AVERAGE )
 
-  // iterate through the grades array changing the value to a number and summing
-  // them up. Then divide the sum by the length of the array to recieve an average.
   const calculateGradeAvg = () => {
     let grades = student.single.grades;
     let sum = 0;
@@ -113,7 +111,7 @@ function SingleStudent(student) {
     return mappedGrades;
   };
 
-  //==========( RETURN )
+  //==========( CONTENT )
 
   return (
     <div className="row list-wd">
@@ -179,8 +177,3 @@ function SingleStudent(student) {
 }
 
 export default React.memo(SingleStudent);
-
-/*
-Note: Normally I would use prop types for prop validation 
-and yup for form validation.
-*/

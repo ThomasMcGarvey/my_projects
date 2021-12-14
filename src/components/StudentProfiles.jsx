@@ -8,7 +8,6 @@ import SingleStudent from "./SingleStudent";
 function StudentProfiles(props) {
   //==========( FORMIK HOOK )
 
-  // handle form values
   const { values, handleChange } = useFormik({
     initialValues: {
       search: "",
@@ -18,26 +17,20 @@ function StudentProfiles(props) {
 
   //==========( STATE HOOKS )
 
-  // state to hold mapped students
   const [displayStudent, setDisplayStudent] = useState();
 
-  // state to hold student data from database
   const [students, setStudents] = useState();
 
   //==========( EFFECT HOOKS )
 
-  // useEffect to handle the changes in students "state" values.
   useEffect(() => {
     if (students === undefined) {
-      // if students value is empty hydrate it
       getStudents();
     }
     if (students !== undefined) {
-      // if students value changes, map it.
       mapStudents(students);
     }
     if (values.tag !== "" || values.search !== "") {
-      // if tag or search field values are not empty
       sortStudents();
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -45,13 +38,11 @@ function StudentProfiles(props) {
 
   //==========( FILTER STUDENTS )
 
-  // Function to start the process of filtering students.
   const sortStudents = () => {
     let filteredStudents = students.filter(filterStudents);
     mapStudents(filteredStudents);
   };
 
-  // Filter each student indivitually depending on search or tag keywords.
   const filterStudents = (aStudent) => {
     let result = null;
 
@@ -71,20 +62,15 @@ function StudentProfiles(props) {
       ) {
         let matchingTag = aStudent.tags.filter(filterTags);
         if (matchingTag[0]) {
-          // if tag keyword is present return student.
           return (result = aStudent);
         } else {
-          // if search keyword is present, but no tag keyword. Do not return student.
           return result;
         }
-      }
-
-      // if search keyword is present and no tag is present return student.
-      else if (values.tag === "") {
+      } else if (values.tag === "") {
         return (result = aStudent);
       }
     }
-    // if student does not match the criteria do not return student.
+
     return result;
   };
 
@@ -101,7 +87,6 @@ function StudentProfiles(props) {
 
   //==========( AJAX CALL )
 
-  // Ajax call to get student data.
   const getStudents = () => {
     studentService
       .getStudents()
@@ -109,26 +94,22 @@ function StudentProfiles(props) {
       .catch(getStudentsError);
   };
 
-  // Upon success set  students "state" to student array.
   const getStudentsSuccess = (response) => {
     let studentList = response.data.students;
     setStudents(studentList);
   };
 
-  // Upon error log error. Normally you would use a logger.
   const getStudentsError = (response) => {
     console.log("Error", response);
   };
 
   //==========( MAP STUDENTS )
 
-  // Map students to mappedStudents and then set display student "state" to mapped value.
   const mapStudents = (students) => {
     let mappedStudents = students.map(mapStudent);
     setDisplayStudent(mappedStudents);
   };
 
-  // Map students individually using SingleStudent component.
   const mapStudent = (student) => (
     <React.Fragment key={`student${student.id}`}>
       <SingleStudent single={student} tagCall={tagCallBack} />
@@ -137,7 +118,6 @@ function StudentProfiles(props) {
 
   //==========( CALL BACK: STUDENT PROFILES <- SINGLE STUDENT )
 
-  // Call back to push tag into target student array.
   const tagCallBack = (tag, studentId) => {
     let filterAddTag = (aStudent) => {
       let result = aStudent;
@@ -153,7 +133,7 @@ function StudentProfiles(props) {
     setStudents(newStudentArr);
   };
 
-  //==========( RETURN )
+  //==========( CONTENT )
 
   return (
     <div className="container d-flex align-items-center justify-content-center list-container">
@@ -189,8 +169,3 @@ function StudentProfiles(props) {
 }
 
 export default React.memo(StudentProfiles);
-
-/*
-Note: Normally I would use prop types for prop validation 
-and yup for form validation.
-*/
